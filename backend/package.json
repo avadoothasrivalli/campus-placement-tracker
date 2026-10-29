@@ -1,0 +1,16 @@
+{
+  "name": "campus-placement-tracker-backend",
+  "version": "1.0.0",
+  "description": "Beginner-friendly Campus Placement Tracker using Express and Supabase PostgreSQL",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "check": "node --check server.js && node --check supabase.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0"
+  }
+}

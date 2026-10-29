@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Placement Tracker</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">CP</span><div><strong>CampusTrack</strong><small>PLACEMENT PORTAL</small></div></div>
+    <nav><a class="nav-item active" href="#dashboard">▦ <span>Dashboard</span></a><a class="nav-item" href="#students">♙ <span>Students</span></a><a class="nav-item" href="#applications">▤ <span>Applications</span></a></nav>
+    <div class="sidebar-note"><strong>Placement season</strong><p>Keep student progress organized in one place.</p><span class="live-dot"></span> Tracker workspace
+    </div>
+    <div class="profile"><div class="avatar">AD</div><div><strong>Admin Dashboard</strong><small>Placement coordinator</small></div></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><p class="eyebrow">OVERVIEW / ACADEMIC YEAR</p><h1>Campus Placement Tracker</h1><p class="subheading">A clear view of student placement progress.</p></div><span class="year-pill">2026–2027 <span class="live-dot"></span></span></header>
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section id="dashboard">
+      <div class="section-heading"><div><h2>Dashboard overview</h2><p>Summary of students and placement activity</p></div><button id="refreshBtn" class="button secondary">↻ Refresh data</button></div>
+      <div class="stats">
+        <article class="stat-card"><div class="stat-top"><span>Total students</span><span class="stat-icon purple">♙</span></div><strong id="studentCount">—</strong><small>Registered student records</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Applications</span><span class="stat-icon blue">▤</span></div><strong id="applicationCount">—</strong><small>Placement applications tracked</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Students placed</span><span class="stat-icon green">✓</span></div><strong id="placedCount">—</strong><small>Applications marked selected</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Placement rate</span><span class="stat-icon orange">↗</span></div><strong id="placementRate">—</strong><small>Placed / total students</small></article>
+      </div>
+    </section>
+    <section class="panel" id="students">
+      <div class="section-heading"><div><h2>Student directory</h2><p>Add students and maintain their academic details.</p></div></div>
+      <form id="studentForm" class="form-grid">
+        <label>Full name<input name="full_name" required maxlength="100" placeholder="e.g. Ananya Reddy"></label>
+        <label>Roll number<input name="roll_number" required maxlength="30" placeholder="e.g. 26ECE001"></label>
+        <label>Branch<select name="branch" required><option value="">Choose branch</option><option>CSE</option><option>ECE</option><option>EEE</option><option>IT</option><option>MECH</option><option>CIVIL</option><option>Other</option></select></label>
+        <label>Email address<input name="email" type="email" maxlength="150" placeholder="student@example.com"></label>
+        <div class="form-actions"><button class="button primary" type="submit">+ Add student</button></div>
+      </form>
+      <div class="table-toolbar"><h3>Registered students</h3><input id="studentSearch" class="search" placeholder="Search name, roll number or branch…" aria-label="Search students"></div>
+      <div class="table-wrap"><table><thead><tr><th>Student</th><th>Roll number</th><th>Branch</th><th>Email</th><th>Added</th></tr></thead><tbody id="studentsTable"><tr><td colspan="5" class="empty">Loading students…</td></tr></tbody></table></div>
+    </section>
+    <section class="panel" id="applications">
+      <div class="section-heading"><div><h2>Placement applications</h2><p>Track company applications and selection status.</p></div></div>
+      <form id="applicationForm" class="form-grid">
+        <label>Student<select name="student_id" id="studentSelect" required><option value="">Choose student</option></select></label>
+        <label>Company<input name="company_name" required maxlength="120" placeholder="e.g. Example Technologies"></label>
+        <label>Role<input name="role" maxlength="120" placeholder="e.g. Graduate Engineer"></label>
+        <label>Application status<select name="status" required><option value="Applied">Applied</option><option value="Assessment">Assessment</option><option value="Interview">Interview</option><option value="Selected">Selected</option><option value="Rejected">Rejected</option></select></label>
+        <label>Package (LPA)<input name="package_lpa" type="number" min="0" max="1000" step="0.1" placeholder="e.g. 6.5"></label>
+        <div class="form-actions"><button class="button primary" type="submit">+ Add application</button></div>
+      </form>
+      <div class="table-toolbar"><h3>Recent applications</h3><input id="applicationSearch" class="search" placeholder="Search student or company…" aria-label="Search applications"></div>
+      <div class="table-wrap"><table><thead><tr><th>Student</th><th>Company</th><th>Role</th><th>Package</th><th>Status</th><th>Update status</th></tr></thead><tbody id="applicationsTable"><tr><td colspan="6" class="empty">Loading applications…</td></tr></tbody></table></div>
+    </section>
+    <footer>CampusTrack <span>•</span> Student placement management <span>•</span> Built with HTML, CSS, JavaScript, Express and Supabase</footer>
+  </main>
+</body>
+</html>
